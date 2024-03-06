@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Smythe&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <script src="main.js" type="module" defer></script>
+  <title>Game Store</title>
+</head>
+<body>
+  <div class="container">
+    <header role="img" aria-label="burger on table">
+      <p class="header-title">Torn's Game Store</p>
+      <p class="header-sub">Cheapest games in town!</p>
+    </header>
+    <main id="menu-container"></main>
+    <p class="thanks-text hidden" id="thanks-text">Thanks, James! Your console is on its way!</p>
+    <div class="cart hidden" id="cart">
+      <p class="cart-title">Your order</p>
+      <div class="card-order" id="cart-order"></div>
+      <div class="cart-total">
+        <p class="total-text">Total price: </p>
+        <p id="price-text">1</p>
+      </div>
+      <button class="action-btn" id="complete-order">Complete order</button>
+    </div>
+    <div class="checkout hidden" id="checkout">
+      <p class="checkout-text">Enter card details</p>
+      <form id="form">
+        <input class="card-input" type="text" placeholder="Enter your name" required/>
+        <input class="card-input" type="number" placeholder="Enter your card number" required/>
+        <input class="card-input" type="number" placeholder="Enter CVV" required/>
+        <button class="action-btn" type="submit">Pay</button>
+      </form>
+    </div>
+
+    <div class="rate hidden" id="rate">
+      <p>Please rate your experience</p>
+      <p class="rate-num" data-rate="3">3 - Ok</p>
+      <p class="rate-num" data-rate="2">2 - Ok</p>
+      <p class="rate-num" data-rate="1">1 - Bad</p>
+    </div>
+  </div>
+</body>
+</html>
