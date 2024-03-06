@@ -1,61 +1,61 @@
 import { consoleArray } from "./data/menu.js";
 
 const menuContainer = document.getElementById("menu-container");
-let cart = []
+let cart = [];
 
 document.addEventListener("click", (e) => {
   if (e.target.dataset.id) {
     handleMenuItemSelected(Number(e.target.dataset.id));
   }
   if (e.target.dataset.remove) {
-    removeCartItem(e.target.dataset.remove)
+    removeCartItem(e.target.dataset.remove);
   }
 
   if (e.target.id === "complete-order") {
-    document.getElementById("checkout").classList.toggle("hidden")
+    document.getElementById("checkout").classList.toggle("hidden");
   }
 
   if (e.target.dataset.rate) {
-    document.getElementById("rate").classList.toggle("hidden")
-    document.getElementById("thanks-text").classList.toggle("hidden")
+    document.getElementById("rate").classList.toggle("hidden");
+    document.getElementById("thanks-text").classList.toggle("hidden");
   }
-})
+});
 
 document.addEventListener("submit", (e) => {
-  e.preventDefault()
-  document.getElementById("form").reset()
-  document.getElementById("rate").classList.toggle("hidden")
-  document.getElementById("cart").classList.toggle("hidden")
-  document.getElementById("checkout").classList.toggle("hidden")
-  reset()
-})
+  e.preventDefault();
+  document.getElementById("form").reset();
+  document.getElementById("rate").classList.toggle("hidden");
+  document.getElementById("cart").classList.toggle("hidden");
+  document.getElementById("checkout").classList.toggle("hidden");
+  reset();
+});
 
 function reset() {
-  cart = []
+  cart = [];
 }
 
 function removeCartItem(item) {
-  cart.splice(item, 1)
+  cart.splice(item, 1);
   refreshCart();
 }
 
 function handleMenuItemSelected(item) {
   if(cart.length === 0) {
-    document.getElementById("thanks-text").classList.add("hidden")
+    document.getElementById("thanks-text").classList.add("hidden");
   }
-  cart.push(consoleArray[item])
+  cart.push(consoleArray[item]);
   refreshCart();
 }
 
 function refreshCart() {
   if (cart.length > 0) {
-    document.getElementById("cart").classList.remove("hidden")
-    let price = 0
-    cart.forEach(item => price += item.price)
+    document.getElementById("cart").classList.remove("hidden");
+    let price = 0;
+    cart.forEach(item => price += item.price);
     document.getElementById("price-text").innerHTML =
-      cart.length > 1 ? `( Discount: 50% off! ) $${price / 2}` : `$${price}`
+      cart.length > 1 ? `( Discount: 50% off! ) $${price / 2}` : `$${price}`;
   } else {
-    document.getElementById("cart").classList.add("hidden")
+    document.getElementById("cart").classList.add("hidden");
   }
   document.getElementById("cart-order").innerHTML = cart.map((cartItem, index) => {
     return `
@@ -65,7 +65,7 @@ function refreshCart() {
         <p class="cart-item-price">$${cartItem.price}</p>
       </div>
     `
-  }).join("")
+  }).join("");
 }
 
 function render() {
